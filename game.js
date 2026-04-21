@@ -46,7 +46,7 @@ let gameStarted = false;
 const player={
 x:50,y:200,w:20,h:30,
 vx:0,vy:0,
-speed:2,jump:5,
+speed:23,jump:20,
 grounded:false
 };
 
