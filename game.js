@@ -8,23 +8,30 @@ const keys = {};
 addEventListener("keydown",e=>keys[e.key.toLowerCase()]=true);
 addEventListener("keyup",e=>keys[e.key.toLowerCase()]=false);
 
-// BACKGROUND MUSIC gugugagaaaaaa
+// BACKGROUND MUSIC
 const bgMusic = new Audio("helldrake.ogg");
 bgMusic.loop = true;
 bgMusic.volume = 0.35;
 
-let musicStarted = false;
-
-addEventListener("keydown",e=>{
-
-keys[e.key.toLowerCase()] = true;
+function startGame(){
 
 if(!gameStarted){
 gameStarted = true;
-bgMusic.play();
+
+bgMusic.play().catch(err=>{
+console.log("Music blocked:", err);
+});
+
 }
 
+}
+
+addEventListener("keydown", e=>{
+keys[e.key.toLowerCase()] = true;
+startGame();
 });
+
+addEventListener("click", startGame);
 
 
 const gravity = 0.5;
